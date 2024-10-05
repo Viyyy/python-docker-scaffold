@@ -1,0 +1,21 @@
+version: '3.8'
+
+
+services:
+  @APP_NAME:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - "8012:8080" # 识别应用端口
+    volumes:
+      - "${SERVER_DATA_PATH}:/datas" # 数据路径
+    restart: always
+    environment:
+      - APP_DATA_PATH=/datas
+      - TZ=Asia/Shanghai
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: '5'  # 限制 CPU 使用量/核心数
+    #       memory: '8G'  # 限制内存使用量

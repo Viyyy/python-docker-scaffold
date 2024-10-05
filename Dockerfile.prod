@@ -1,0 +1,7 @@
+FROM @base_image:@tag
+
+WORKDIR /code
+
+COPY /src/. /code/.
+
+CMD ["python", "main.py"]
